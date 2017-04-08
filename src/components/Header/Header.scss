@@ -1,4 +1,8 @@
-.route--active {
-  font-weight: bold;
-  text-decoration: underline;
+.header {
+  .nav {
+    background-color: #EB070E !important;
+    &__active {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
 }
