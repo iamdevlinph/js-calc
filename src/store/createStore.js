@@ -4,6 +4,8 @@ import { browserHistory } from 'react-router'
 import makeRootReducer from './reducers'
 import { updateLocation } from './location'
 
+import logger from 'redux-logger'
+
 export default (initialState = {}) => {
   // ======================================================
   // Middleware Configuration
@@ -31,7 +33,7 @@ export default (initialState = {}) => {
     makeRootReducer(),
     initialState,
     composeEnhancers(
-      applyMiddleware(...middleware),
+      applyMiddleware(...middleware, logger),
       ...enhancers
     )
   )
