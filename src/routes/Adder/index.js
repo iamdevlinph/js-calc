@@ -19,6 +19,6 @@ export default (store) => ({
       cb(null, Adder)
 
     /* Webpack named bundle   */
-    }, 'counter')
+    }, 'adder')
   }
 })
