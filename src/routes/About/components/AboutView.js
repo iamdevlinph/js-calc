@@ -1,10 +1,10 @@
 import React from 'react'
 import DuckImage from '../assets/Duck.jpg'
-import './HomeView.scss'
+import './AboutView.scss'
 
-export const HomeView = () => (
+export const AboutView = () => (
   <div>
-    <h4>Welcome!</h4>
+    <h4>About Page!</h4>
     <img
       alt='This is a duck, because Redux!'
       className='duck'
@@ -12,4 +12,4 @@ export const HomeView = () => (
   </div>
 )
 
-export default HomeView
+export default AboutView
