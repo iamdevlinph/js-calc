@@ -1,35 +1,43 @@
 .calculator {
     &__container {
         background: red;
-        width: 230px;
+        width: 250px;
         margin: 0 auto;
+        padding: 20px;
     }
     &__result {
-      border: 1px blue solid;
+        border: 1px blue solid;
     }
     &__table {
         tr {
             td {
-                border: 1px solid black !important;
+                // border: 1px solid black !important;
                 text-align: center !important;
-                padding: 10px;
+                padding: 5px;
                 button {
                     display: inline-block;
                     padding: 0px !important;
                     &.single {
-                        width: 35px !important;
-                        height: 35px !important;
+                        width: 40px !important;
+                        height: 40px !important;
                     }
                     &.double__row {
                         width: 40px !important;
                         height: 90px !important;
                     }
                     &.double__col {
-                        width: 90px !important;
-                        height: 35px !important;
+                        width: 95px !important;
+                        height: 40px !important;
                     }
                 }
             }
+        }
+    }
+    .history {
+        &__container {
+            background: red;
+            width: 230px;
+            margin: 0 auto;
         }
     }
 }
