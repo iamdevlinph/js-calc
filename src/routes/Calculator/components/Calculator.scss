@@ -66,8 +66,7 @@
         height: 75px;
         font-size: 28px;
         width: 100%;
-        overflow: hidden;
-        // border-bottom: 1px solid black;
+        overflow: hidden; // border-bottom: 1px solid black;
     }
     #keypad>div.display>input {
         font-family: 'Source Sans Pro', sans-serif;
@@ -82,8 +81,7 @@
         transition: none !important;
     }
     #keypad>div>div {
-        padding-top: 15px;
-        // border-right: 1px solid black;
+        padding-top: 15px; // border-right: 1px solid black;
         width: 24.5%;
         text-align: center;
         background-color: #000;
@@ -106,30 +104,33 @@
         .horizontal.display {
             height: 112px;
             font-size: 0px;
-            height: 96px;
+            height: 100px;
         }
         .key {
             cursor: pointer;
-            // key press
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none; // key press
             &:active {
-                background-color:rgba(0, 0, 0, 0.5);
+                background-color: rgba(0, 0, 0, 0.5);
             }
         }
         &>div>div.operation-key {
             background-color: #000;
-            color: #FFF;
-            // operation-key keyEquals
+            color: #FFF; // operation-key keyEquals
             &.keyEquals {
                 background-color: red !important;
             }
         }
         .displayPanel {
-            margin-bottom: 0px !important;
-            // displayPanel__sub
+            margin-bottom: 0px !important; // displayPanel__sub
             &__sub {
                 height: 20px !important;
-                font-size: 10pt !important;
+                font-size: 8pt !important;
                 border-bottom: 1px solid grey !important;
+                padding-bottom: 4px !important;
             }
         }
     }

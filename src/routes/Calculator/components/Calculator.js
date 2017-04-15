@@ -15,7 +15,7 @@ export const Calculator = (props) => (
             </div>
             <div className='horizontal '>
               <div id='keyC' data-rnc-tag='C' className='key control-key'>C</div>
-              <div id='keyPlusMinus' className='key control-key'>+/-</div>
+              <div id='keyPlusMinus' className='key control-key'>±</div>
               <div id='keyPercent' className='key control-key'>%</div>
               <div id='keyDivide' className='key operation-key'>/</div>
             </div>
