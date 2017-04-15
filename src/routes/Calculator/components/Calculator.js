@@ -5,85 +5,51 @@ import './Calculator.scss'
 export const Calculator = (props) => (
   <div className='calculator'>
     <div className='row'>
+      <div className='col s3' />
       <div className='col s6'>
-        <div className='calculator__container'>
-          <table className='calculator__table'>
-            <tbody>
-              <tr>
-                <td colSpan='4'>
-                  <span className='calculator__result'>CALCULATOR RESULT</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <button className='btn single'>DEL</button>
-                </td>
-                <td>
-                  <button className='btn single'>/</button>
-                </td>
-                <td>
-                  <button className='btn single'>*</button>
-                </td>
-                <td>
-                  <button className='btn single'>-</button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <button className='btn single'>7</button>
-                </td>
-                <td>
-                  <button className='btn single'>8</button>
-                </td>
-                <td>
-                  <button className='btn single'>9</button>
-                </td>
-                <td rowSpan='2'>
-                  <button className='btn double__row'>+</button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <button className='btn single'>4</button>
-                </td>
-                <td>
-                  <button className='btn single'>5</button>
-                </td>
-                <td>
-                  <button className='btn single'>6</button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <button className='btn single'>1</button>
-                </td>
-                <td>
-                  <button className='btn single'>2</button>
-                </td>
-                <td>
-                  <button className='btn single'>3</button>
-                </td>
-                <td rowSpan='2'>
-                  <button className='btn double__row'>=</button>
-                </td>
-              </tr>
-              <tr>
-                <td colSpan='2'>
-                  <button className='btn double__col'>0</button>
-                </td>
-                <td>
-                  <button className='btn single'>.</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div id='rim'>
+          <div id='keypad'>
+            <div className='horizontal display'>
+              <input className='displayPanel' type='text' value='789' readOnly />
+              <input className='displayPanel__sub' type='text' value='123 + 456 + ' readOnly />
+            </div>
+            <div className='horizontal '>
+              <div id='keyC' data-rnc-tag='C' className='key control-key'>C</div>
+              <div id='keyPlusMinus' className='key control-key'>+/-</div>
+              <div id='keyPercent' className='key control-key'>%</div>
+              <div id='keyDivide' className='key operation-key'>/</div>
+            </div>
+            <div className='horizontal'>
+              <div id='key7' data-rnc-tag='7' className='key'>7</div>
+              <div id='key8' data-rnc-tag='8' className='key'>8</div>
+              <div id='key9' data-rnc-tag='9' className='key'>9</div>
+              <div id='keyMultiply' className='key operation-key'>x</div>
+            </div>
+            <div className='horizontal'>
+              <div id='key4' data-rnc-tag='4' className='key'>4</div>
+              <div id='key5' data-rnc-tag='5' className='key'>5</div>
+              <div id='key6' data-rnc-tag='6' className='key'>6</div>
+              <div id='keySubtract' className='key operation-key'>-</div>
+            </div>
+            <div className='horizontal'>
+              <div id='key1' data-rnc-tag='1' className='key'>1</div>
+              <div id='key2' data-rnc-tag='2' className='key'>2</div>
+              <div id='key3' data-rnc-tag='3' className='key'>3</div>
+              <div id='keyAdd' className='key operation-key'>+</div>
+            </div>
+            <div className='horizontal'>
+              <div id='key0' data-rnc-tag='0' className='key double-wide'>0</div>
+              <div id='keyDecimalPoint' data-rnc-tag='.' className='key'>.</div>
+              <div id='keyEquals' className='key operation-key keyEquals'>=</div>
+            </div>
+          </div>
         </div>
       </div>
       {/* History Panel */}
-      <div className='col s6'>
-        <div className='history__container'>
+      <div className='col s3'>
+        {/* <div className='history__container'>
           <h2>History</h2>
-        </div>
+        </div> */}
       </div>
     </div>
   </div>
