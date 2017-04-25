@@ -1,6 +1,7 @@
 export const CALCULATOR_ADD = 'CALCULATOR_ADD'
 
 export function add (value = 1) {
+  console.log('addd')
   return {
     type  : CALCULATOR_ADD,
     payload : value
