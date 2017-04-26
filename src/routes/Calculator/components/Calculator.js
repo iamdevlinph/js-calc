@@ -16,14 +16,20 @@ class Calculator extends Component {
 
   constructor () {
     super()
-    this.numberClick = this.handleNumberClick.bind(this)
     this.state = { value: 0 }
+
+    this.numberClick = this.handleNumberClick.bind(this)
+    this.clearClick = this.handleClearClick.bind(this)
   }
 
   handleNumberClick (value) {
     var currentVal = this.state.value
     var newVal = +(currentVal.toString() + value.toString())
     this.setState({ value: newVal })
+  }
+
+  handleClearClick () {
+    this.setState({ value: 0 })
   }
 
   render () {
@@ -39,7 +45,7 @@ class Calculator extends Component {
                   <input className='displayPanel__sub' type='text' value='123 + 456 + ' readOnly />
                 </div>
                 <div className='horizontal '>
-                  <div id='keyC' data-rnc-tag='C' className='key control-key'>C</div>
+                  <div id='keyC' data-rnc-tag='C' className='key control-key' onClick={() => this.clearClick()}>C</div>
                   <div id='keyPlusMinus' className='key control-key'>±</div>
                   <div id='keyPercent' className='key control-key'>%</div>
                   <div id='keyDivide' className='key operation-key'>/</div>
