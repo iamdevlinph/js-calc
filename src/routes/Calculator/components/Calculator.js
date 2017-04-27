@@ -8,6 +8,8 @@ import './Calculator.scss'
 
 // export default Calculator
 
+const maxDisplay = 9
+
 class Calculator extends Component {
   static propTypes = {
     calculator: PropTypes.array.isRequired,
@@ -18,18 +20,30 @@ class Calculator extends Component {
     super()
     this.state = { value: 0 }
 
-    this.numberClick = this.handleNumberClick.bind(this)
-    this.clearClick = this.handleClearClick.bind(this)
+    this.numberClick = this.numberClick.bind(this)
+    this.clearDisplay = this.clearDisplay.bind(this)
+    this.isDisplayMax = this.isDisplayMax.bind(this) // check if current display is at 9
   }
 
-  handleNumberClick (value) {
+  numberClick (value) {
+    // only add number if still not yet max
+    if (this.isDisplayMax()) {
+      this.setState({ value: 'Max Digits' })
+      return
+    }
     var currentVal = this.state.value
     var newVal = +(currentVal.toString() + value.toString())
     this.setState({ value: newVal })
   }
 
-  handleClearClick () {
+  // clear display
+  clearDisplay () {
     this.setState({ value: 0 })
+  }
+
+  isDisplayMax () {
+    var curDisplay = this.state.value.toString().length
+    return curDisplay === maxDisplay
   }
 
   render () {
@@ -45,7 +59,8 @@ class Calculator extends Component {
                   <input className='displayPanel__sub' type='text' value='123 + 456 + ' readOnly />
                 </div>
                 <div className='horizontal '>
-                  <div id='keyC' data-rnc-tag='C' className='key control-key' onClick={() => this.clearClick()}>C</div>
+                  <div id='keyC' data-rnc-tag='C' className='key control-key'
+                    onClick={() => this.clearDisplay()}>C</div>
                   <div id='keyPlusMinus' className='key control-key'>±</div>
                   <div id='keyPercent' className='key control-key'>%</div>
                   <div id='keyDivide' className='key operation-key'>/</div>
