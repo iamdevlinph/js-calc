@@ -16,7 +16,7 @@ const ACTION_HANDLERS = {
   [CALCULATOR_ADD] : (state, action) => state + action.payload
 }
 
-const initialState = []
+const initialState = 0
 
 export default function adderReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]

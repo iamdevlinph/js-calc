@@ -12,23 +12,34 @@ const maxDisplay = 9
 
 class Calculator extends Component {
   static propTypes = {
-    calculator: PropTypes.array.isRequired,
+    calculator: PropTypes.number.isRequired,
     add: PropTypes.func.isRequired
   };
 
   constructor () {
     super()
-    this.state = { value: 0 }
+    this.state = { value: 0, subDisplay: '', operation: '', operationOnGoing: false }
 
     this.numberClick = this.numberClick.bind(this)
     this.clearDisplay = this.clearDisplay.bind(this)
     this.isDisplayMax = this.isDisplayMax.bind(this) // check if current display is at 9
+    this.operationClick = this.operationClick.bind(this)
+    this.updateSubDisplay = this.updateSubDisplay.bind(this)
+    this.reset = this.reset.bind(this)
+    this.clearSubDisplay = this.clearSubDisplay.bind(this)
   }
 
   numberClick (value) {
     // only add number if still not yet max
     if (this.isDisplayMax()) {
       this.setState({ value: 'Max Digits' })
+      return
+    }
+    if (this.state.operationOnGoing) {
+      this.clearDisplay()
+      this.setState({ operationOnGoing: false }, () => {
+        this.numberClick(value)
+      })
       return
     }
     var currentVal = this.state.value
@@ -42,8 +53,43 @@ class Calculator extends Component {
   }
 
   isDisplayMax () {
-    var curDisplay = this.state.value.toString().length
-    return curDisplay === maxDisplay
+    var curDisplayLen = this.state.value.toString().length
+    return curDisplayLen === maxDisplay
+  }
+
+  operationClick (operation) {
+    this.setState({ operation: '+' }, () => {
+      this.updateSubDisplay()
+      this.setState({ operationOnGoing: true })
+    })
+    switch (operation) {
+      case '+':
+        this.props.add()
+        break
+    }
+  }
+
+  updateSubDisplay () {
+    var curValue = this.state.value.toString()
+    var curSubDisplay = this.state.subDisplay
+    var operation = ' ' + this.state.operation + ' '
+    var toDisplay = ''
+    if (this.state.subDisplay) {
+      toDisplay = curSubDisplay + curValue + operation
+    } else {
+      toDisplay = curValue + operation
+    }
+    this.setState({ subDisplay: toDisplay })
+  }
+
+  reset () {
+    this.clearDisplay()
+    this.clearSubDisplay()
+    this.setState({ operationOnGoing: false })
+  }
+
+  clearSubDisplay () {
+    this.setState({ subDisplay: '' })
   }
 
   render () {
@@ -56,11 +102,11 @@ class Calculator extends Component {
               <div id='keypad'>
                 <div className='horizontal display'>
                   <input className='displayPanel' type='text' value={this.state.value} readOnly />
-                  <input className='displayPanel__sub' type='text' value='123 + 456 + ' readOnly />
+                  <input className='displayPanel__sub' type='text' value={this.state.subDisplay} readOnly />
                 </div>
                 <div className='horizontal '>
                   <div id='keyC' data-rnc-tag='C' className='key control-key'
-                    onClick={() => this.clearDisplay()}>C</div>
+                    onClick={() => this.reset()}>C</div>
                   <div id='keyPlusMinus' className='key control-key'>±</div>
                   <div id='keyPercent' className='key control-key'>%</div>
                   <div id='keyDivide' className='key operation-key'>/</div>
@@ -81,7 +127,7 @@ class Calculator extends Component {
                   <div id='key1' data-rnc-tag='1' className='key' onClick={() => this.numberClick(1)}>1</div>
                   <div id='key2' data-rnc-tag='2' className='key' onClick={() => this.numberClick(2)}>2</div>
                   <div id='key3' data-rnc-tag='3' className='key' onClick={() => this.numberClick(3)}>3</div>
-                  <div id='keyAdd' className='key operation-key' onClick={this.props.add}>+</div>
+                  <div id='keyAdd' className='key operation-key' onClick={() => this.operationClick('+')}>+</div>
                 </div>
                 <div className='horizontal'>
                   <div id='key0' data-rnc-tag='0' className='key double-wide'
